@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>老成 · IT维护 & 陈式太极拳</title>
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --card: #ffffff;
+      --border: #e5e5e0;
+      --text: #1a1a1a;
+      --sub: #666666;
+      --it-bg: #f0f4ff;
+      --it-accent: #2563eb;
+      --tc-bg: #fdf6ee;
+      --tc-accent: #c2410c;
+      --cta: #1a1a1a;
+      --cta-text: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 50px;
+    }
+    .avatar {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a1a1a 0%, #444 100%);
+      margin: 0 auto 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px; color: #fff;
+      overflow: hidden;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .hero h1 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+    .hero .tagline {
+      font-size: 17px; color: var(--sub);
+      margin-bottom: 20px;
+    }
+    .hero .summary {
+      font-size: 15px; color: var(--sub);
+      max-width: 480px; margin: 0 auto;
+      padding: 16px 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      text-align: center;
+      color: var(--sub);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      margin: 40px 0;
+    }
+    .divider::before, .divider::after {
+      content: "────";
+      margin: 0 12px;
+      opacity: 0.4;
+    }
+
+    /* ── Cards ── */
+    .cards { display: flex; flex-direction: column; gap: 16px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .card.it::before { background: var(--it-accent); }
+    .card.tc::before { background: var(--tc-accent); }
+
+    .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .card-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .card.it .card-icon { background: var(--it-bg); }
+    .card.tc .card-icon { background: var(--tc-bg); }
+    .card-title { font-size: 18px; font-weight: 700; }
+    .card-sub { font-size: 13px; color: var(--sub); margin-top: 2px; }
+    .card ul {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 8px;
+      margin-bottom: 18px;
+    }
+    .card ul li { font-size: 15px; padding-left: 20px; position: relative; }
+    .card.it ul li::before { content: "🔧"; position: absolute; left: 0; }
+    .card.tc ul li::before { content: "🥋"; position: absolute; left: 0; }
+    .card ul li span { color: var(--sub); font-size: 13px; margin-left: 6px; }
+
+    .card-copy {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--sub);
+      line-height: 1.8;
+      margin-top: 14px;
+    }
+    .card-copy strong { color: var(--text); }
+
+    .card-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 14px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .card-btn:hover { opacity: 0.75; }
+    .card.it .card-btn { background: var(--it-accent); color: #fff; }
+    .card.tc .card-btn { background: var(--tc-accent); color: #fff; }
+
+    /* ── About ── */
+    .about {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-top: 16px;
+    }
+    .about h2 { font-size: 18px; margin-bottom: 14px; }
+    .about p { font-size: 15px; color: var(--sub); margin-bottom: 12px; }
+    .about .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .badge {
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge.dark { background: #1a1a1a; color: #fff; }
+    .badge.outline { border: 1px solid var(--border); color: var(--sub); }
+
+    /* ── Contact ── */
+    .contact {
+      text-align: center;
+      padding: 50px 20px 60px;
+    }
+    .contact h2 { font-size: 22px; margin-bottom: 10px; }
+    .contact p { font-size: 14px; color: var(--sub); margin-bottom: 24px; }
+    .contact-btn {
+      display: inline-block;
+      background: var(--cta);
+      color: var(--cta-text);
+      padding: 14px 36px;
+      border-radius: 12px;
+      font-size: 16px; font-weight: 700;
+      text-decoration: none;
+    }
+    .contact-btn:hover { opacity: 0.8; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--sub);
+      padding: 0 20px 40px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ Hero ═══ -->
+<div class="hero">
+  <div class="avatar">
+    <!-- 替换下方 src 为你的头像图片 URL，或直接用文字 -->
+    <img src="https://via.placeholder.com/96/1a1a1a/ffffff?text=%E6%88%90" alt="老成" />
+  </div>
+  <h1>老成</h1>
+  <p class="tagline">修得了电脑 · 站得了桩</p>
+  <p class="summary">
+    白天帮企业处理网络故障、修打印机、写方案。<br>
+    晚上教站桩、打拳。<br>
+    两个看起来不搭边的活儿，都干了十几年，都挺熟。
+  </p>
+</div>
+
+<div class="container">
+
+  <!-- ═══ 两个业务 ═══ -->
+  <div class="divider">业务范围</div>
+
+  <div class="cards">
+
+    <!-- IT 服务 -->
+    <div class="card it">
+      <div class="card-header">
+        <div class="card-icon">💻</div>
+        <div>
+          <div class="card-title">IT 维护 & 网络服务</div>
+          <div class="card-sub">企业 / 个人 · 快速上门</div>
+        </div>
+      </div>
+      <ul>
+        <li>电脑及网络维护 <span>日常保养 + 故障排查</span></li>
+        <li>打印机维修 & 共享配置 <span>各类品牌型号</span></li>
+        <li>中小企业 IT 外包 <span>方案设计 + 日常驻场</span></li>
+      </ul>
+      <div class="card-copy">
+        <strong>版1（简洁）：</strong> 电脑网络打印机，修的好。
+        <strong>版3（接地气）：</strong> 电脑坏了？网络卡了？打印机又罢工了？找我，十五分钟到。
+      </div>
+      <a href="wechat:your-wechat-id" class="card-btn">📩 微信联系</a>
+    </div>
+
+    <!-- 太极培训 -->
+    <div class="card tc">
+      <div class="card-header">
+        <div class="card-icon">🥋</div>
+        <div>
+          <div class="card-title">陈式太极拳培训</div>
+          <div class="card-sub">师承陈照奎一脉 · 十三代传人</div>
+        </div>
+      </div>
+      <ul>
+        <li>站桩 & 八段锦 <span>入门基础 · 适合上班族</span></li>
+        <li>陈式太极拳 <span>老架一路 · 劲路训练</span></li>
+        <li>企业/团体健康课 <span>上门教学 · 定制内容</span></li>
+      </ul>
+      <div class="card-copy">
+        <strong>版2（性格）：</strong> 想站桩？想学八段锦？想正经学陈式太极拳？找我，师承陈照奎一脉，正规。
+      </div>
+      <a href="wechat:your-wechat-id" class="card-btn">📩 微信联系</a>
+    </div>
+
+  </div>
+
+  <!-- ═══ 关于我 ═══ -->
+  <div class="divider">关于老成</div>
+  <div class="about">
+    <h2>两个身份，一个靠谱的人</h2>
+    <p>
+      国家級社会体育指导员，陈式太极拳第十三代传人，师承凌志安—陈照奎一脉。
+      同时在锦天城南京做了十余年 IT 维护，服务客户遍及南京各类企业。
+    </p>
+    <p>
+      白天修电脑，晚上打太极。两个业务，一句实话：干就完了。
+    </p>
+    <div class="badge-row">
+      <span class="badge dark">陈式太极拳第13代传人</span>
+      <span class="badge dark">国家级社会体育指导员</span>
+      <span class="badge outline">IT 维护 10年+</span>
+      <span class="badge outline">南京 · 均可上门</span>
+    </div>
+  </div>
+
+  <!-- ═══ 联系 ═══ -->
+  <div class="contact">
+    <h2>有需要，直接说</h2>
+    <p>不废话，干完活再说其他的</p>
+    <a href="wechat:your-wechat-id" class="contact-btn">👈 加微信联系</a>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 老成 · IT维护 & 陈式太极拳
+</footer>
+
+</body>
+</html>
