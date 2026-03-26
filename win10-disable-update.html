@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>禁用 Windows10 系统自动更新 - 老成</title>
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --card: #ffffff;
+      --border: #e5e5e0;
+      --text: #1a1a1a;
+      --sub: #666666;
+      --accent: #2563eb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      padding: 20px;
+    }
+    .container { max-width: 720px; margin: 0 auto; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .back-link:hover { text-decoration: underline; }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    .meta { font-size: 13px; color: var(--sub); margin-bottom: 24px; }
+    .tag {
+      display: inline-block;
+      background: #f0f4ff;
+      color: var(--accent);
+      padding: 2px 10px;
+      border-radius: 99px;
+      font-size: 12px;
+      margin-right: 8px;
+    }
+    .step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      display: inline-block;
+      width: 28px; height: 28px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-right: 12px;
+    }
+    .step-title { font-weight: 700; margin-bottom: 8px; }
+    .step-content { color: var(--sub); padding-left: 40px; }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--sub);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="../index.html" class="back-link">← 返回首页</a>
+  
+  <h1>禁用 Windows10 系统自动更新</h1>
+  <div class="meta">
+    <span class="tag">IT 技术</span>
+    <span class="tag">Windows10</span>
+    <span>作者：老成</span>
+  </div>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-title">禁用 Windows Update 服务</div>
+    <div class="step-content">
+      电脑 → 右键 → 管理 → 服务和应用程序 → 点击服务 → 找到 <strong>Windows Update</strong><br>
+      双击 → 启动类型选 <strong>禁用</strong> → 如果运行中，点 <strong>停止</strong><br>
+      点击 应用、确定<br>
+      切换到「恢复」标签 → 第一次失败选 <strong>无操作</strong> → 计数填 <strong>9999天</strong><br>
+      点击 确定
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">2</span>
+    <div class="step-title">禁用 Microsoft Edge 自动更新任务</div>
+    <div class="step-content">
+      管理界面 → 系统工具 → 任务计划程序 → 任务计划程序库<br>
+      找到两个 <strong>Microsoft Edge Update</strong><br>
+      分别右键 → 选择 <strong>禁用</strong>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">3</span>
+    <div class="step-title">禁用 Windows Update 计划任务</div>
+    <div class="step-content">
+      计算机管理界面 → 系统工具 → 任务计划程序 → 任务计划程序库 → Microsoft → Windows<br>
+      下拉找到 <strong>Windows Update</strong><br>
+      右侧选中 <strong>Scheduled Start</strong> → 右键 → 选择 <strong>禁用</strong>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 老成 · IT维护 & 陈式太极拳
+  </footer>
+</div>
+
+</body>
+</html>
